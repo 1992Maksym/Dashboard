@@ -1,9 +1,11 @@
 <template>
-  <div>
-    <app-sidebar></app-sidebar>
-    <div class="container">
-      <div class="main">
-        <router-view></router-view>
+  <div class="dashboard">
+    <div class="dashboard-wrap">
+      <app-sidebar></app-sidebar>
+      <div class="container">
+        <div class="dashboard-body">
+          <router-view></router-view>
+        </div>
       </div>
     </div>
   </div>
@@ -11,7 +13,7 @@
 
 <script>
 
-import Sidebar from "@/views/Sidebar.vue";
+import Sidebar from "@/components/Sidebar.vue";
 
 export default {
   components: {
@@ -20,6 +22,8 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+  .dashboard-wrap {
+    display: flex;
+  }
 </style>
