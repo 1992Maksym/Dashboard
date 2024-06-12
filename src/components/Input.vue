@@ -22,6 +22,14 @@ export default {
   ></input>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '../assets/styles';
 
+  input {
+    border: none;
+    background-color: $customers-light-turquoise;
+  }
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+  }
 </style>
