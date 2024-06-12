@@ -172,6 +172,8 @@ name: "Sidebar",
     width: 306px;
     height: 100%;
     padding: 36px 28px 76px;
+    box-shadow: rgba(0, 0, 0, 0.05) 8px 0 15px 15px;
+    z-index: 1;
 
     .container {
       display: flex;
