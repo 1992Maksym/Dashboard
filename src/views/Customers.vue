@@ -1,5 +1,7 @@
 <script>
 import Input from "@/components/Input.vue"
+import { mapMutations, mapGetters } from 'vuex'
+
 
 export default {
   name: "Customers",
@@ -8,13 +10,21 @@ export default {
   },
   data() {
     return {
-      searchValue: ''
+      searchValue: '',
     }
   },
+  computed: {
+    ...mapGetters('customersData',['getData'])
+  },
   methods: {
+    ...mapMutations({getCustomers: 'customersData/getCustomers'}),
+
     checkValue() {
       console.log(this.searchValue)
     }
+  },
+  mounted(){
+    this.getCustomers();
   }
 }
 </script>
@@ -54,14 +64,17 @@ export default {
           <div class="customer__country">Country</div>
           <div class="customer__status">Status</div>
         </div>
-        <div class="content__body-customers">
-          <div class="customer__name"></div>
-          <div class="customer__company"></div>
-          <div class="customer__phone"></div>
-          <div class="customer__email"></div>
-          <div class="customer__country"></div>
-          <div class="customer__status"></div>
+        <div class="content__body-wrap">
+          <div class="content__body-customers" v-for="person in getData">
+            <div class="customer__name">{{ person.name }}</div>
+            <div class="customer__company">{{ person.company }}</div>
+            <div class="customer__phone">{{ person.phone }}</div>
+            <div class="customer__email">{{ person.email }}</div>
+            <div class="customer__country">{{ person.country }}</div>
+            <div class="customer__status" :class="person.status">{{ person.status }}</div>
+          </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -122,8 +135,47 @@ export default {
         grid-template-columns: 2fr 1fr 2fr 3fr 2fr 1fr;
         font-size: 16px;
         color: $customers-light-grey;
-        padding: 0 67px 14px 38px;
+        padding: 20px 67px 20px 38px;
         border-bottom: 1px solid $customers-light-grey;
+      }
+      .content__body-wrap {
+        margin: 0 67px 0 38px;
+
+        .content__body-customers {
+          display: grid;
+          grid-template-columns: 2fr 1fr 2fr 3fr 2fr 1fr;
+          font-size: 16px;
+          padding: 20px 0;
+          border-bottom: 1px solid $customers-light-grey;
+          color: $customers-dark;
+
+          .customer__name,
+          .customer__phone,
+          .customer__company,
+          .customer__country,
+          .customer__email,
+          .customer__status{
+            font-weight: 500;
+          }
+          .customer__status.active {
+            background-color: $customers-active;
+            color: $customers-active-text;
+            border: 1px solid $customers-active-text;
+            border-radius: 5px;
+          }
+          .customer__status.inactive {
+            background-color: $customers-inactive;
+            color: $customers-inactive-text;
+            border: 1px solid $customers-inactive-text;
+            border-radius: 5px;
+          }
+          .customer__status::first-letter {
+            text-transform: uppercase;
+          }
+        }
+      }
+      .customer__status {
+        text-align: center;
       }
     }
   }
