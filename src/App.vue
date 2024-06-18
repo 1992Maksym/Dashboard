@@ -24,11 +24,10 @@ export default {
 
 <style lang="scss" scoped>
   .dashboard-wrap {
-    display: grid;
-    grid-template-columns: 1fr 5fr;
 
     .dashboard-body {
       height: 100%;
+      padding-left: 306px;
     }
   }
 </style>

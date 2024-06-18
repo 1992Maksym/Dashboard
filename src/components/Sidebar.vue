@@ -174,11 +174,13 @@ name: "Sidebar",
     padding: 36px 28px 76px;
     box-shadow: rgba(0, 0, 0, 0.05) 8px 0 15px 15px;
     z-index: 1;
+    position: fixed;
 
     .container {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      height: 100%;
 
       .header {
         margin-bottom: 64px;
@@ -192,7 +194,7 @@ name: "Sidebar",
 
         .header-title {
           color: #000000;
-          font-size: 36px;
+          font-size: 26px;
           font-weight: 500;
         }
         .header-version {
@@ -225,7 +227,7 @@ name: "Sidebar",
             text-decoration: none;
           }
           .menu-item__text {
-            font-size: 18px;
+            font-size: 14px;
             color: $sidebar-grey;
             padding-left: 14px;
           }
