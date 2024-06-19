@@ -1,9 +1,24 @@
 <script>
 export default {
 name: "Sidebar",
-  methods: {
-    getLink(link) {
-      console.log(link)
+  computed: {
+    isDashboard() {
+      return this.$route.path.indexOf('/dashboard') !== -1;
+    },
+    isProduct() {
+      return this.$route.path.indexOf('/product') !== -1;
+    },
+    isCustomers() {
+      return this.$route.path.indexOf('/customers') !== -1;
+    },
+    isIncome() {
+      return this.$route.path.indexOf('/income') !== -1;
+    },
+    isPromote() {
+      return this.$route.path.indexOf('/promote') !== -1;
+    },
+    isHelp() {
+      return this.$route.path.indexOf('/help') !== -1;
     }
   }
 }
@@ -23,7 +38,7 @@ name: "Sidebar",
           </router-link>
         </div>
         <ul class="menu">
-          <li class="menu-item" :class="{active : $route.path.indexOf('/dashboard') !== -1}">
+          <li class="menu-item" :class="{active : isDashboard}">
             <router-link to="/dashboard">
               <div class="menu-item__wrap">
                 <div class="menu-item__icon">
@@ -41,7 +56,7 @@ name: "Sidebar",
               <div class="menu-item__arrow"></div>
             </router-link>
           </li>
-          <li class="menu-item"  :class="{active : $route.path.indexOf('/product') !== -1}">
+          <li class="menu-item" :class="{active : isProduct}">
             <router-link to="/product">
               <div class="menu-item__wrap">
                 <div class="menu-item__icon">
@@ -63,7 +78,7 @@ name: "Sidebar",
               </div>
             </router-link>
           </li>
-          <li class="menu-item" :class="{active : $route.path.indexOf('/customers') !== -1}">
+          <li class="menu-item" :class="{active : isCustomers}">
             <router-link to="/customers">
               <div class="menu-item__wrap">
                 <div class="menu-item__icon">
@@ -84,7 +99,7 @@ name: "Sidebar",
               </div>
             </router-link>
           </li>
-          <li class="menu-item" :class="{active : $route.path.indexOf('/income') !== -1}">
+          <li class="menu-item" :class="{active : isIncome}">
             <router-link to="/income">
               <div class="menu-item__wrap">
                 <div class="menu-item__icon">
@@ -107,7 +122,7 @@ name: "Sidebar",
               </div>
             </router-link>
           </li>
-          <li class="menu-item" :class="{active : $route.path.indexOf('/promote') !== -1}">
+          <li class="menu-item" :class="{active : isPromote}">
             <router-link to="/promote">
               <div class="menu-item__wrap">
                 <div class="menu-item__icon">
@@ -129,7 +144,7 @@ name: "Sidebar",
               </div>
             </router-link>
           </li>
-          <li class="menu-item" :class="{active : $route.path.indexOf('/help') !== -1}">
+          <li class="menu-item" :class="{active : isHelp}">
             <router-link to="/help">
               <div class="menu-item__wrap">
                 <div class="menu-item__icon">
