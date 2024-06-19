@@ -74,7 +74,6 @@ export default {
             <div class="customer__status" :class="person.status">{{ person.status }}</div>
           </div>
         </div>
-
       </div>
       <div class="content__footer">
         <div class="content__footer-info">Showing data 1 to 8 of  256K entries</div>
