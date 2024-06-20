@@ -11,6 +11,9 @@ export default {
     mutations: {
         async getCustomers(state) {
             state.customers = await axios.get(state.path);
+        },
+        getFilterCustomers(state, payload) {
+            state.customers.data = Object.values(state.customers.data).filter(el => el.name.toLowerCase().includes(payload.value.trim()))
         }
     },
     getters: {
