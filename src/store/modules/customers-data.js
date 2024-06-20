@@ -12,8 +12,9 @@ export default {
         async getCustomers(state) {
             state.customers = await axios.get(state.path);
         },
-        getFilterCustomers(state, payload) {
-            state.customers.data = Object.values(state.customers.data).filter(el => el.name.toLowerCase().includes(payload.value.trim()))
+        async getFilterCustomers(state, payload) {
+            console.log(Object.values(state.customers.data).filter(el => el.name.toLowerCase().includes(payload.value.trim())))
+            state.customers.data = Object.values((await axios.get(state.path)).data).filter(el => el.name.toLowerCase().includes(payload.value.trim()))
         }
     },
     getters: {
