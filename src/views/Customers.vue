@@ -17,10 +17,10 @@ export default {
     ...mapGetters('customersData',['getData'])
   },
   methods: {
-    ...mapMutations({getCustomers: 'customersData/getCustomers'}),
+    ...mapMutations({getCustomers: 'customersData/getCustomers', getFilterCustomers: 'customersData/getFilterCustomers'}),
 
     checkValue() {
-      console.log(this.searchValue)
+      this.getFilterCustomers({value: this.searchValue})
     }
   },
   mounted(){
@@ -65,7 +65,7 @@ export default {
           <div class="customer__status">Status</div>
         </div>
         <div class="content__body-wrap">
-          <div class="content__body-customers" v-for="person in getData">
+          <div class="content__body-customers" v-for="person in getData" :key="person.id">
             <div class="customer__name">{{ person.name }}</div>
             <div class="customer__company">{{ person.company }}</div>
             <div class="customer__phone">{{ person.phone }}</div>
